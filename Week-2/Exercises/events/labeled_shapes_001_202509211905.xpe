@@ -1,0 +1,21 @@
+#Expyriment 1.0.0 (Python 3.10.14), .xpe-file, coding: UTF-8
+#date: Sun Sep 21 2025 19:05:30
+#sha1: None
+#modules: 
+#display: size=(800, 600), window_mode=True, opengl=2
+#os: uname_result(system='Darwin', node='Idil-MacBook-Pro-2.local', release='21.6.0', version='Darwin Kernel Version 21.6.0: Mon Feb 19 20:24:34 PST 2024; root:xnu-8020.240.18.707.4~1/RELEASE_X86_64', machine='x86_64')
+Time,Type,Event,Value,Detail,Detail2
+11148,design,log,
+#design: #exp: Triangle & Hexagon (labeled)
+#design: block_cnt,block_id,trial_cnt,trial_id
+11148,design,logged,
+11148,Experiment,started
+11151,Stimulus,presented,0
+11154,Stimulus,presented,3
+11156,Stimulus,presented,1
+11157,Stimulus,presented,4
+11159,Stimulus,presented,2
+11167,Stimulus,presented,5
+38351,Keyboard,received,32,wait
+38351,Experiment,ended
+38366,Stimulus,presented,6
