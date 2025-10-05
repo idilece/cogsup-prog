@@ -1,0 +1,84 @@
+#Expyriment 1.0.0 (Python 3.10.14), .xpe-file, coding: UTF-8
+#date: Sun Oct 05 2025 20:38:24
+#sha1: None
+#modules: 
+#display: size=(800, 600), window_mode=True, opengl=2
+#os: uname_result(system='Darwin', node='Idil-MacBook-Pro-2.local', release='21.6.0', version='Darwin Kernel Version 21.6.0: Mon Feb 19 20:24:34 PST 2024; root:xnu-8020.240.18.707.4~1/RELEASE_X86_64', machine='x86_64')
+Time,Type,Event,Value,Detail,Detail2
+1340,design,log,
+#design: #exp: Ternus illusion
+#design: block_cnt,block_id,trial_cnt,trial_id
+1340,design,logged,
+1340,Experiment,started
+1350,Stimulus,presented,0
+1848,Keyboard,received,32,wait
+1871,Stimulus,presented,1
+2625,Keyboard,received,32,wait
+2633,Stimulus,presented,2
+2633,Stimulus,presented,3
+2633,Stimulus,presented,4
+2861,Stimulus,presented,5
+2861,Stimulus,presented,6
+2861,Stimulus,presented,7
+3100,Stimulus,presented,2
+3100,Stimulus,presented,3
+3100,Stimulus,presented,4
+3331,Stimulus,presented,5
+3331,Stimulus,presented,6
+3331,Stimulus,presented,7
+3565,Stimulus,presented,2
+3565,Stimulus,presented,3
+3565,Stimulus,presented,4
+3798,Stimulus,presented,5
+3798,Stimulus,presented,6
+3798,Stimulus,presented,7
+4025,Stimulus,presented,2
+4025,Stimulus,presented,3
+4025,Stimulus,presented,4
+4258,Stimulus,presented,5
+4259,Stimulus,presented,6
+4259,Stimulus,presented,7
+4491,Stimulus,presented,2
+4491,Stimulus,presented,3
+4491,Stimulus,presented,4
+4726,Stimulus,presented,5
+4726,Stimulus,presented,6
+4726,Stimulus,presented,7
+4955,Keyboard,received,32,check
+4973,Stimulus,presented,8
+5580,Keyboard,received,32,wait
+5589,Stimulus,presented,9
+5589,Stimulus,presented,10
+5589,Stimulus,presented,11
+6107,Stimulus,presented,12
+6107,Stimulus,presented,13
+6107,Stimulus,presented,14
+6624,Stimulus,presented,9
+6624,Stimulus,presented,10
+6624,Stimulus,presented,11
+7142,Stimulus,presented,12
+7142,Stimulus,presented,13
+7142,Stimulus,presented,14
+7653,Stimulus,presented,9
+7653,Stimulus,presented,10
+7653,Stimulus,presented,11
+8170,Stimulus,presented,12
+8170,Stimulus,presented,13
+8170,Stimulus,presented,14
+8687,Keyboard,received,32,check
+8704,Stimulus,presented,15
+9173,Keyboard,received,32,wait
+9180,Stimulus,presented,16
+9180,Stimulus,presented,17
+9180,Stimulus,presented,18
+9686,Stimulus,presented,19
+9686,Stimulus,presented,20
+9686,Stimulus,presented,21
+10204,Stimulus,presented,16
+10204,Stimulus,presented,17
+10204,Stimulus,presented,18
+10722,Stimulus,presented,19
+10722,Stimulus,presented,20
+10722,Stimulus,presented,21
+11238,Keyboard,received,32,check
+11239,Experiment,ended
