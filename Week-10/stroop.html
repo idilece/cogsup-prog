@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stroop Task</title>
+    <script src="https://unpkg.com/jspsych@8.0.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+    <link
+      href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body></body>
+
+  <script>
+    // Constants 
+    const COLORS = ["red", "blue", "green", "orange"];
+    // Key mapping
+    const KEYMAP = {
+      red: "r",
+      blue: "b",
+      green: "g",
+      orange: "o"
+    };
+
+    const FIXATION_DURATION = 500;  // ms
+    const STROOP_DURATION   = 2000; // ms
+    const BLANK_DURATION    = 100;  // ms
+
+    // Combination of word × color 
+    const BASE_STIMULI = [];
+    for (let w of COLORS) {
+      for (let c of COLORS) {
+        BASE_STIMULI.push({
+          word: w.toUpperCase(),      
+          color: c,                    
+          trial_type: (w === c) ? "match" : "mismatch"
+        });
+      }
+    }
+    
+    // Helper Functions
+    function makeFixationTrial() {
+      return {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<p style="font-size: 48px; text-align:center;">+</p>`,
+        choices: "NO_KEYS",
+        trial_duration: FIXATION_DURATION,
+        data: { phase: "fixation", is_blank: true }
+      };
+    }
+
+    function makeStroopTrial(stim) {
+      return {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<p style="color: ${stim.color}; font-size: 40px; text-align:center;">${stim.word}</p>`,
+        choices: [KEYMAP.red, KEYMAP.blue, KEYMAP.green, KEYMAP.orange],
+        trial_duration: STROOP_DURATION,
+        data: {
+          phase: "stroop",
+          word: stim.word,
+          color: stim.color,
+          trial_type: stim.trial_type,
+          correct_key: KEYMAP[stim.color]  
+        },
+        on_finish: function (data) {
+          data.correct = jsPsych.pluginAPI.compareKeys(
+            data.response,
+            data.correct_key
+          );
+        }
+      };
+    }
+
+    function makeBlankTrial() {
+      return {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<p style="font-size: 40px; text-align:center;">&nbsp;</p>`,
+        choices: "NO_KEYS",
+        trial_duration: BLANK_DURATION,
+        data: { phase: "blank", is_blank: true }
+      };
+    }
+  </script>
+
+  <script>
+    // Main experimental loop
+    const jsPsych = initJsPsych({
+      on_finish: function () {
+        const cleaned = jsPsych.data
+          .get()
+          .filterCustom(trial => !trial.is_instruction && !trial.is_blank);
+
+        cleaned.localSave("csv", "stroop_results.csv");
+        document.body.innerHTML = "<p>Thank you!</p>";
+      }
+    });
+
+    // Instructions
+    const instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <p>Hello! In this task, you have to indicate the color of the word.</p>
+        <p>Press <b>O</b> if it is <span style="color: orange">ORANGE</span>,</p>
+        <p>Press <b>R</b> if it is <span style="color: red">RED</span>,</p>
+        <p>Press <b>B</b> if it is <span style="color: blue">BLUE</span>,</p>
+        <p>Press <b>G</b> if it is <span style="color: green">GREEN</span>.</p>
+        <p>Press any key to start.</p>
+      `,
+      choices: "ALL_KEYS",
+      data: { is_instruction: true }
+    };
+
+    let timeline = [];
+    timeline.push(instructions);
+
+    // 32 trials (each combination repeated 2 times)
+    const stroop_stimuli = jsPsych.randomization.repeat(BASE_STIMULI, 2);
+    for (let stim of stroop_stimuli) {
+        let nested = {
+            timeline: [
+                makeFixationTrial(),
+                makeStroopTrial(stim),
+                makeBlankTrial()
+    ]
+  };
+    timeline.push(nested);}
+
+    jsPsych.run(timeline);
+  </script>
+</html>
